@@ -15,7 +15,7 @@ namespace Arcus.EventGrid.Parsers
         /// <param name="rawJsonBody">Raw JSON body</param>
         /// <returns>Typed EventGridMessage</returns>
         public static EventGridMessage<TEvent> Parse<TEvent>(string rawJsonBody)
-            where TEvent : IEvent, new()
+            where TEvent : IEvent
         {
             Guard.NotNullOrWhitespace(rawJsonBody, nameof(rawJsonBody));
 
@@ -32,7 +32,7 @@ namespace Arcus.EventGrid.Parsers
         /// <param name="sessionId">Session id for event grid message</param>
         /// <returns>Typed EventGridMessage</returns>
         public static EventGridMessage<TEvent> Parse<TEvent>(string rawJsonBody, string sessionId)
-            where TEvent : IEvent, new()
+            where TEvent : IEvent
         {
             Guard.NotNullOrWhitespace(rawJsonBody, nameof(rawJsonBody));
             Guard.NotNullOrWhitespace(sessionId, nameof(sessionId));

@@ -5,7 +5,7 @@ using GuardNet;
 
 namespace Arcus.EventGrid
 {
-    public class EventGridMessage<TEvent> where TEvent : IEvent, new()
+    public class EventGridMessage<TEvent> where TEvent : IEvent
     {
         /// <summary>
         /// Creates event grid message with passed session Id

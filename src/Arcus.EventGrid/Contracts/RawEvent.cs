@@ -34,7 +34,7 @@ namespace Arcus.EventGrid.Contracts
             EventTime = eventTime;
         }
 
-        public RawEvent()
+        private RawEvent()
         {
         }
 

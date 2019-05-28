@@ -39,13 +39,13 @@ namespace Arcus.EventGrid.Publishing.Interfaces
         /// </summary>
         /// <typeparam name="TEvent">Type of the specific event</typeparam>
         /// <param name="event">Event to publish</param>
-        Task Publish<TEvent>(TEvent @event) where TEvent : class, IEvent, new();
+        Task Publish<TEvent>(TEvent @event) where TEvent : class, IEvent;
 
         /// <summary>
         ///     Publish an event grid message
         /// </summary>
         /// <typeparam name="TEvent">Type of the specific event</typeparam>
         /// <param name="events">Events to publish</param>
-        Task PublishMany<TEvent>(IEnumerable<TEvent> events) where TEvent : class, IEvent, new();
+        Task PublishMany<TEvent>(IEnumerable<TEvent> events) where TEvent : class, IEvent;
     }
 }
