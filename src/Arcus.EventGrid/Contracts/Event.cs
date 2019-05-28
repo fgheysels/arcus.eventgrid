@@ -12,21 +12,15 @@ namespace Arcus.EventGrid.Contracts
     public abstract class Event<TData> : IEvent
         where TData : new()
     {
-        protected Event()
+        protected Event(string id) : this(id, null)
         {
         }
 
-        protected Event(string id)
+        protected Event(string id, string subject)
         {
             Guard.NotNullOrWhitespace(id, nameof(id));
 
             Id = id;
-        }
-
-        protected Event(string id, string subject) : this(id)
-        {
-            Guard.NotNullOrWhitespace(subject, nameof(subject));
-
             Subject = subject;
         }
 
@@ -53,7 +47,7 @@ namespace Arcus.EventGrid.Contracts
         /// <summary>
         ///     Unique identifier for the event.
         /// </summary>
-        public string Id { get; set; }
+        public string Id { get; }
 
         /// <summary>
         ///     The schema version of the event metadata. Event Grid defines the schema of the top-level properties. Event Grid

@@ -1,15 +1,14 @@
 ﻿using Arcus.EventGrid.Contracts;
 using Arcus.EventGrid.Security.Contracts.Events.v1.Data;
+using Newtonsoft.Json;
 
 namespace Arcus.EventGrid.Security.Contracts.Events.v1
 {
     public class SubscriptionValidation : Event<SubscriptionEventData>
     {
-        public SubscriptionValidation()
-        {
-        }
 
-        public SubscriptionValidation(string id) : base(id)
+        [JsonConstructor]
+        public SubscriptionValidation(string id) : this(id, null)
         {
         }
 
@@ -17,7 +16,7 @@ namespace Arcus.EventGrid.Security.Contracts.Events.v1
         {
         }
 
-        public override string DataVersion { get;  } = "1";
-        public override string EventType { get;  } = "Microsoft.EventGrid.SubscriptionValidationEvent";
+        public override string DataVersion { get; } = "1";
+        public override string EventType { get; } = "Microsoft.EventGrid.SubscriptionValidationEvent";
     }
 }

@@ -16,7 +16,7 @@ namespace Arcus.EventGrid.Contracts
         /// <param name="subject">Subject of the event</param>
         /// <param name="dataVersion">Data version of the event body</param>
         /// <param name="eventTime">Time when the event occured</param>
-        public RawEvent(string id, string type, string body, string subject, string dataVersion, DateTimeOffset eventTime)
+        public RawEvent(string id, string type, string body, string subject, string dataVersion, DateTimeOffset eventTime) : base(id, subject)
         {
             Guard.NotNullOrWhitespace(id, nameof(id), "No event id was specified");
             Guard.NotNullOrWhitespace(type, nameof(type), "No event type was specified");
@@ -27,19 +27,13 @@ namespace Arcus.EventGrid.Contracts
             var parsedBody = JToken.Parse(body);
 
             DataVersion = dataVersion;
-            Subject = subject;
             EventType = type;
-            Id = id;
             Data = parsedBody;
             EventTime = eventTime;
         }
 
-        private RawEvent()
-        {
-        }
-
         [JsonConstructor]
-        protected RawEvent(string dataVersion, string eventType)
+        protected RawEvent(string id, string dataVersion, string eventType) : base(id)
         {
             DataVersion = dataVersion;
             EventType = eventType;

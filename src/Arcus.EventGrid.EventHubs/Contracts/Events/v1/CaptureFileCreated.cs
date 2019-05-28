@@ -1,15 +1,13 @@
 ﻿using Arcus.EventGrid.Contracts;
 using Arcus.EventGrid.EventHubs.Contracts.Events.v1.Data;
+using Newtonsoft.Json;
 
 namespace Arcus.EventGrid.EventHubs.Contracts.Events.v1
 {
     public class CaptureFileCreated : Event<EventHubCaptureEventData>
     {
-        public CaptureFileCreated()
-        {
-        }
-
-        public CaptureFileCreated(string id) : base(id)
+        [JsonConstructor]
+        public CaptureFileCreated(string id) : this(id, null)
         {
         }
 

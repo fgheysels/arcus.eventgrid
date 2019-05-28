@@ -1,15 +1,13 @@
 ﻿using Arcus.EventGrid.Contracts;
 using Arcus.EventGrid.Storage.Contracts.Events.v1.Data;
+using Newtonsoft.Json;
 
 namespace Arcus.EventGrid.Storage.Contracts.Events.v1
 {
     public class BlobCreated : Event<BlobEventData>
     {
-        public BlobCreated()
-        {
-        }
-
-        public BlobCreated(string id) : base(id)
+        [JsonConstructor]
+        public BlobCreated(string id) : this(id, null)
         {
         }
 
