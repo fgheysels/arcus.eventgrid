@@ -146,7 +146,7 @@ namespace Arcus.EventGrid.Publishing
                 .PostJsonAsync(events);
         }
 
-        private async Task ThrowApplicationExceptionAsync(HttpResponseMessage response)
+        private static async Task ThrowApplicationExceptionAsync(HttpResponseMessage response)
         {
             var rawResponse = string.Empty;
 
